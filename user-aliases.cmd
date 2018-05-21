@@ -4,6 +4,8 @@
 ;= rem In batch mode, jump to the end of the file
 ;= goto:eof
 ;= Add aliases below here
+;= rem another alias file 'user-aliases.cmd'
+; 
 e.=explorer .
 gl=git log --oneline --all --graph --decorate  $*
 ls=ls --show-control-chars -F --color $*
@@ -13,43 +15,33 @@ history=cat "%CMDER_ROOT%\config\.history"
 unalias=alias /d $1
 
 cmderr=cd /d "%CMDER_ROOT%"
-ll=ls --color $* 
+dp=dir $t pwd  
 
-ls=ls --color $
-;= blog=cd /d D:\github\jekyll\lesstif.github.io
-blog=cd /d D:\gitlab\php\blog
-qw=dir $t pwd  
+;= utility & convinience command
+ls=ls --color --show-control-char $*
+ll=ls --color --show-control-char $*
 
 ls=ls --color $*
 
 ;=openssl=D:\util\openssl-win32\openssl.exe $*
 
-
-;= 단축dir 
-ubnet=pushd . $t cd /d c:\Users\lesstif\Code\ubnet
-github=pushd . $t cd /d d:\github
-jira=pushd . $t cd /d d:\github\php\php-jira-rest-client
-cms=pushd . $t cd /d D:\gitlab\kccf\cms
-kccf=pushd . $t cd /d D:\gitlab\kccf\cms
-
 ;= env & config
 ar=alias/reload
 reload=alias/reload
 qal=%VI% "%CMDER_ROOT%\config\user-aliases.cmd" $t alias/reload
+qal2=%VI% "%CMDER_ROOT%\config\user-custom-aliases.cmd" $t alias/reload
 sett=%VI% "%CMDER_ROOT%\config\user-profile.cmd" 
-setr=qwe
 
 ;= vim
-vi=%VI% $*
-gvim=%VI% $*
-vimrc=%VI% d:\util\vim\_vimrc
-virc=%VI% d:\util\vim\_vimrc
+vimrc=gvim %HOME%\scoop\apps\vim\current\_vimrc
+virc=gvim %HOME%\scoop\apps\vim\current\_vimrc
 
 ;=
-eh=%VI% C:\Windows\System32\drivers\etc\hosts
+eh=gvim C:\Windows\System32\drivers\etc\hosts
 
 ;= develop tools
 ant=d:\devel\apache-ant-1.9.1\bin\ant.bat $*
+valet=C:\Users\lesstif\AppData\Roaming\Composer\vendor\bin\valet.bat  $*
 
 ;==
 security-best-practice=pushd . $t cd /d C:\Users\lesstif\Code\security-best-practices $t gitbook serve $t popd
@@ -120,9 +112,9 @@ flyway2=d:\util\flyway-2.3.1-no-clean-target\flyway.cmd
 h=http --follow
 
 ;= html2pdf
-wkhtmltopdf="D:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
-wpdf=wkhtmltopdf
-wkhtmltoimage="D:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe"
+wkhtmltopdf="D:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe" $*
+wpdf="D:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe" $*
+wkhtmltoimage="D:\Program Files\wkhtmltopdf\bin\wkhtmltoimage.exe" $*
 wimage=wkhtmltoimage
 wimg=wkhtmltoimage
 
@@ -147,3 +139,7 @@ gidefault=%CURL_GI%/vim,windows,osx,linux -o .gitignore
 giall=%CURL_GI%/vim,java,php,windows,osx,linux,eclipse,intellij,maven,gradle,phpstorm,laravel,composer  -o .gitignore
 gijava=%CURL_GI%/vim,java,windows,osx,linux,eclipse,intellij,maven,gradle  -o .gitignore
 giphp=%CURL_GI%/vim,php,windows,osx,linux,phpstorm,laravel,composer  -o gitignore
+
+;= for headless chrome
+chrome="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" $*
+hchrome="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --headless $*
